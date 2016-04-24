@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container blog-list-container">
+        <div class="row">
+            <div class="col-lg-8 blog-list-container-left">
+                <!-- blog entry -->
+                <div style="text-align: center;"><h1>blog</h1></div>
+                {% for post in posts %}
+                        <a href="/post/{{ post.id }}">
+                            <h2 class="post-title">{{ post.title }}</h2>
+                        </a>
+                        <ul class="list-unstyled list-inline">
+                            <li><strong><span class="label label-info"><a href="{% url 'blog.views.deleteBlog' post.id %}
+                            ">deleteBlog</a></span></strong></li>
+                            <li><strong><span class="label label-info"><a href="{% url 'blog.views.editBlog' post.id %}
+                                ">editBlog</a></span></strong></li>
+                        </ul>
+                {% endfor %}
+            </div>
+            <div class="col-lg-4 blog-list-container-right">
+                <div class="well">
+                    <h3 class="text-primary">About me</h3>
+
+                    <h4 class="text-primary">name:{{ user.username }}</h4>
+                    <h4 class="text-primary">last_login:{{user.last_login}}</h4>
+
+                    <!-- /input-group -->
+                </div>
+                <!-- /well -->
+                <div class="well">
+                    <h4 class="text-primary">Friend_line</h4>
+                    <a href="http://www.liaoxuefeng.com/"><h4 class="post-title">python learning</h4></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+

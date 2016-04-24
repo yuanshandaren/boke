@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <!--<link href="css/clean-blog.min.css" rel="stylesheet">-->
+    <link href="{% static 'css/clean-blog.css' %}" rel="stylesheet">
+
+    <!-- highlight for code -->
+    <link href="{% static 'css/solarized_dark.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default  navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a href="/">Myblog</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        {% if request.user.pk %}
+                        <a href="/logout/">logout</a>
+                    {% else %}
+                        <a href="/login/">login</a>
+                    {% endif %}
+                    </li>
+                     <li>
+                         {% if request.user.pk %}
+                         <a href="/personal/{{ request.user.pk }}/createBlog/">createPost</a>
+                         {% else %}
+                         <a href="/register/">register</a>
+                         {% endif %}
+                     </li>
+                     <li>
+                         {% if request.user.pk %}
+                         <a href="/personal/{{ request.user.pk }}/">personal</a>
+                         {% else %}
+                         <a href="/admin/">administer</a>
+                         {% endif %}
+                     </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+ <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-camera-retro fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://weibo.com/u/2596987063">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/yuanshandaren">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    {% load staticfiles %}
+    <!-- jQuery -->
+    <script src="{% static 'js/lib/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/lib/bootstrap.min.js' %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+
+    <script src="{% static 'js/lib/highlight.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('pre').each(function (i, block) {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yuanshaner"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load staticfiles %}
+    <link href="{% static 'css/1.css' %}" rel="stylesheet">
+    <div class="container">
+        <div class="row">
+            <form name="form" method="post" action="{% url 'blog.views.createBlog' id %}" role="form" id="contact-form" class="contact-form">
+                {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="title" autocomplete="off" id="title" placeholder="title">
+                            </div>
+                        </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea class="form-control textarea" rows="3" name="Post_text" id="Post_text" placeholder="Post_text"></textarea>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-12">
+                      <input type="submit" class="btn main-btn pull-right" value="create a blog"></input>
+                      </div>
+                      </div>
+                    </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+

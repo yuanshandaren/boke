@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if posts %}
+        {% for post in posts %}
+            <div class="post-preview">
+                <a href="/post/{{ post.id }}">
+                    <h2 class="post-title">{{ post.title }}</h2>
+                </a>
+
+            <p class="post-meta">
+                Posted by
+                <a href="#">{{ post.author }}</a>
+            </p>
+            </div>
+        <hr>
+        {% endfor %}
+    {% else %}
+        <h1>Welcome to  myBlog</h1>
+    {% endif %}
+
+{% endblock %}
+
+
+

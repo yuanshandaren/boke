@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+        <div class="blog-list-container-left-content">
+            <h1>{{ post.title }}</h1>
+
+            <p class="post-meta">Posted by<a href="#">{{ post.author }}</a></p>
+        <hr>
+        <div>
+            {{ post.Post_text }}
+        </div>
+        </div>
+        <div class="ds-thread" data-thread-key="{{ post.id }}" data-title="{{ post.title }}" data-url="http://127.0.0.1:5000/post/{{ post.id }}"></div>
+
+{% endblock %}
+
+
+
+
+
